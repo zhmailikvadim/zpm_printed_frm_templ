@@ -20,7 +20,13 @@ sap.ui.define(['sap/m/MessageToast'], function (MessageToast) {
         controlAttachmentGenerated.setVisible(false);
       } else {
         if (!event.context.getObject().uuid_char) {
-          oView.getModel().setProperty('uuid_char', oBindingContext.getProperty('uuid'), oBindingContext);
+          oView
+            .getModel()
+            .setProperty(
+              'uuid_char',
+              oBindingContext.getProperty('uuid').replace(/-/g, '').toUpperCase(),
+              oBindingContext,
+            );
         }
         controlAttachmentGenerated.setVisible(true);
       }
